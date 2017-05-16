@@ -1,0 +1,12 @@
+[HIT Configuration]
+title = Predict the path of a bouncing ball
+description = You will be shown several short video clips of a ball bouncing in a box. Your task is to determine where the ball will go. NOTE: you can only participate in ONE (1) experiment for credit.
+amt_keywords = psychology, experiment
+lifetime = 24
+us_only = true
+approve_requirement = 95
+contact_email_on_error = fredcallaway@berkeley.edu
+ad_group = psychology
+psiturk_keywords = psychology
+organization_name = UC Berkeley
+browser_exclude_rule = mobile, tablet

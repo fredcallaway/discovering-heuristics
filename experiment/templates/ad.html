@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+The ad.html has a very specific format.
+
+Really there are two "ads" contained within this file.
+
+The first ad displays to participants who are browsing
+the Amazon Mechanical Turk site but have not yet accepted
+your hit.
+
+The second part of the ad display after the person selected
+"Accept HIT" on the Amazon website.  This will reload the
+ad and will display a button which, when clicked, will pop
+open a new browser window pointed at your local psiTurk
+server (assuming it is running and accessible to the Internet).
+
+See comments throughout for hints
+
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Psychology Experiment</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+        /* these tyles need to be defined locally */
+        body {
+          padding:0px;
+          margin: 0px;
+          background-color: white;
+          color: black;
+          font-weight: 300;
+          font-size: 13pt;
+        }
+
+        /* ad.html  - the ad that people view first */
+        #adlogo {
+          width: 200px;
+          padding: 2px;
+        }
+
+        #container-hit-preview {
+          background: white;
+          margin: 30px;
+        }
+
+        h1 {
+          margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="container-hit-preview" class="media">
+    <div class="media-left pull-left" href='#'>
+        <!-- REPLACE THE LOGO HERE WITH YOUR  UNIVERSITY, LAB, or COMPANY -->
+        <img id="adlogo" src="{{ server_location }}/static/images/berkeley.png" alt="Lab Logo" />
+    </div>
+    <div class="media-body">
+
+      <!--
+     If assignmentid is "ASSIGNMENT_ID_NOT_AVAILABLE"
+     it means the participant has NOT accepted your hit.
+     This should display the typical advertisement about
+     your experiment: who can participate, what the
+     payment is, the time, etc...
+
+       -->
+       {% if assignmentid == "ASSIGNMENT_ID_NOT_AVAILABLE" %}
+
+       <h1>Call for participants</h1>
+       <p>The Computational Cognitive Science Group at the University
+           of California, Berkeley (UC Berkeley) is looking for online
+           participants for a brief experiment on how people reason about
+           physics.</p>
+
+           <p id="screen-size" class="alert alert-danger"></p>
+
+           <p>In this experiment, you will watch a ball bouncing around in a
+              box. Your task is to try to predict whether the ball will go
+              through a hole in the wall.The experiment typically takes about
+              <b>14 minutes</b> to complete.</p>
+
+<!--            <p>The base pay is $0.40. Depending on your performance, you can receive
+              a bonus of up to $0.50 for a <b>maximum total pay of $0.90</b>.
+              Based on pilot studies, we estimate the average bonus to be $0.37 for
+              an <b>average total pay of $0.77</b>. -->
+           </p>
+
+              <p>The requirements are:</p>
+
+               <ul>
+                  <li>Your screen has dimensions of at least 920 x 760 pixels,</li>
+                  <li>You are at least 18 years old,</li>
+                  <li>You have normal vision or wear corrective lenses, and</li>
+                  <li>You are a fluent English speaker.</li>
+              </ul>
+
+              <p>Note: the experiment will only work in recent browsers, and
+               may have difficulty loading on slower connections.</p>
+
+               <div class="alert alert-warning">
+                 <strong>This task can only be completed once.</strong>
+                 If you have already completed this task before the system will not
+                 allow you to run again. If this looks familiar please return the
+                 HIT so someone else can participate.
+             </div>
+             <p>
+                 Otherwise, please click the "Accept HIT" button on the Amazon site
+                 above to begin the task.
+             </p>
+
+        {% else %}
+
+      <!--
+     OTHERWISE
+     If assignmentid is NOT "ASSIGNMENT_ID_NOT_AVAILABLE"
+     it means the participant has accepted your hit.
+     You should thus show them instructions to begin the
+     experiment ... usually a button to launch a new browser
+     window pointed at your server.
+
+                 It is important you do not change the code for the
+                 openwindow() function below if you want you experiment
+                 to work.
+             -->
+             <h1>Thank you for accepting this HIT!</h1>
+             <p>
+                 By clicking the following URL link, you will be taken to the experiment,
+                 including complete instructions and an informed consent agreement.
+             </p>
+             <script type="text/javascript">
+             function openwindow() {
+                 popup = window.open('{{ server_location }}/consent?hitId={{ hitid }}&assignmentId={{ assignmentid }}&workerId={{ workerid }}','Popup','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width='+1024+',height='+768+'');
+             }
+             </script>
+             <div class="alert alert-warning">
+                 <b>Warning</b>: Please disable pop-up blockers before continuing.
+             </div>
+
+             <button type="button" class="btn btn-primary btn-lg" onClick="openwindow();">
+                 Begin Experiment
+             </button>
+
+        {% endif %}
+      <!--
+     endif
+       -->
+    </div>
+</div>
+
+<script type="text/javascript">
+var elem = document.getElementById("screen-size");
+if ((window.screen.availWidth < 920 ) || (window.screen.availHeight < 720)) {
+    elem.innerHTML = "<b>Warning</b>: Your screen is not " +
+    "large enough to participate in this experiment. Please do NOT " +
+    "accept this HIT.";
+} else {
+    elem.setAttribute("style", "display: none");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+paths:
+  root: ~/Projects/cue_ball
+  data: data/experiment1
+  figures: analysis/figures
+  human: data/experiment1/human,
+  json_stimuli: experiment/static/json
+  latex: analysis/latex_results
+  model: data/experiment1/model/SimPaths.csv
+  python_stimuli: stimuli/experiment1/python
+  results: analysis/results
+
+sim:
+  nsims: 10000
+  kapv: 251.041178467
+  kapb: 37.4112091557
+  kapm: 107296103.303
+  perr: 13.2344801041
+  sd0: 235.803279578
+  sdadj: 1.0
+  T: 1
+  target_p: 0.9
+
+stimuli:
+  angrange: [-60, 60]
+  ballsize: 10
+  ballvel: 400
+  centery: 325
+  dims: [900, 650]
+  fps: 40
+  nmdist: 50
+  pasttime: 0.4
+  showtime: 0.2
+  wallwid: 10
+
+  hole_types: [hit, miss]
+
+  num:
+    # instruct: 2
+    # control: 2
+    # easy: 2
+    # standard: 8
+    # hard: 2
+    # critical: 4
+
+    # instruct: 8
+    # control: 8
+    # easy: 30
+    # standard: 48
+    # hard: 30
+    # critical: 8
+
+    instruct: 8
+    control: 8
+    easy: 15
+    standard: 24
+    hard: 15
+    critical: 8
+
+  blocks:
+    instruct:
+      # mix: true
+      holesize: 300
+      occtimes: [1.6]
+      bounces: [1, 2]
+
+    easy:
+      holesize: 300
+      occtimes: [1.4]
+      bounces: [1]
+    
+    standard:
+      holesize: 200
+      occtimes: [2.2]
+      bounces: [1, 2]
+    
+    hard:
+      holesize: 100
+      occtimes: [3.2]
+      bounces: [2]
+
+    critical:
+      holesize: 100
+      occtimes: [3.2]
+      bounces: [2]
+
+    filler:
+      holesize: 200
+      occtimes: [2.2]
+      bounces: [1, 2]
+  
+  between_subjects:
+    cue_within: [true]
+    wall_cue: [false]
+    color_cue: [background]
+    bonus_rate: [0.00]
+    show_feedback: [false, true]
+    backstory: [giveaway]
+    block_size: [12]
+    fixed_blocks: [false]
+    cue_counter: [0, 1, 2]
+
+    
+
