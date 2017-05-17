@@ -159,10 +159,10 @@ s/`EXPALL_COMP_EXP3_FALSE`/$\\mu = -0.01 \\pm 0.01,\\ t(295)=-1.01,\\ p = 1.00$/
 s/`EXPALL_COMP_EXP1_TRUE`/$\\mu = 0.16 \\pm 0.01,\\ t(295)=11.82,\\ p < 0.001$/g
 s/`EXPALL_COMP_EXP2_TRUE`/$\\mu = 0.02 \\pm 0.01,\\ t(295)=1.62,\\ p = 0.15$/g
 s/`EXPALL_COMP_EXP3_TRUE`/$\\mu = 0.00 \\pm 0.01,\\ t(295)=0.20,\\ p = 0.81$/g
-s/`EXP23_N_PARTICIPANT`/227/g
+s/`EXP23_N_PARTICIPANT`/224/g
 s/`EXP23_N_CAUGHT`/11/g
 s/`EXP23_N_UNFINISHED`/15/g
-s/`EXP23_N_REMAIN`/201/g
+s/`EXP23_N_REMAIN`/198/g
 s/`EXP1_CRIT_ANOVA_PASS_QUIZ`/$\\chi^2(1)=1.395,\\ p = 0.24$/g
 s/`EXP1_CRIT_ANOVA_FEEDBACK_PASS_QUIZ`/$\\chi^2(1)=18.127,\\ p < 0.001$/g
 s/`EXP1_CRIT_ANOVA_GOOD_CUE_PASS_QUIZ`/$\\chi^2(1)=6.950,\\ p < 0.01$/g
